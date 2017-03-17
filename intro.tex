@@ -1,0 +1,43 @@
+\section{Introduction}
+\noindent The current success of deep learning hinges on the ability to apply gradient-based optimization to high-capacity models. It has achieved impressive results on many large-scale supervised tasks such as image classification \cite{alexnet,residual_net} and speech recognition \cite{deep_asr}. % and games \cite{alphago,deep-atari}. 
+Notably, these models are extensively hungry for data. 
+
+In contrast, human beings have strong ability to learn novel concepts efficiently from very few or even one example. As pointed out in \cite{lake-tutorial}, human learning is distinguished by its richness and efficiency. %, with the help of intuitive physics, psychology and extensive prior knowledge. 
+To test whether machines can approach this goal, Lake \etal propose the invaluable ``Omniglot'' hand-written character classification benchmark \cite{lake-omniglot}, where each training class has very few examples and the ability to fast-learn is evaluated on never-seen classes with only one example.
+
+There has been previous work on attaining rapid learning from sparse data, denoted as meta-learning or learning-to-learn \cite{learn-to-learn1,meta-learn-theory}.  %\cite{learn-to-learn,meta-learn-review,meta-learn-intro,meta-learn-lstm,meta-learn-theory,meta-learn-svm}. 
+Although used in numerous senses, the term generally refers to exploiting meta-knowledge within a single learning system across tasks or algorithms. In theory, a meta-learning is able to identify the right ``inductive bias shifts'' from previous experiences given enough data and many tasks \cite{meta-learn-theory}. However, even if a well-designed convolutional neural network is a good ``inductive bias shift'' for a visual recognition task, it is still elusive to find the optimal parameter from a small training set without any prior knowledge.
+
+To alleviate this issue, low-shot learning methods have been proposed to transfer knowledge from various \textit{priors} to avoid over-fitting, such as \cite{feature-transfer}. Recently, \cite{low-shot} propose a novel prior of \textit{gradient penalty}, %, with the insight of improving numerical stability. 
+which works pretty well experimentally. Although an intuitive explanation is provided in \cite{low-shot} that a good solution of the network parameters should be stable with small gradients, it is mysterious why adding such a regularization magically improves the low-shot task by a large margin. Mathematical derivation shows that gradient penalty is closely related to \textit{regularizing the feature representation}. 
+
+In this paper, we give more analysis, both empirically and theoretically, on why adding a \textit{\textbf{gradient regularization}}, or \textit{\textbf{feature penalty}} performs so well. Moreover, we carefully carry out two case studies: (1) the simplest non-linear-separable XOR classification, and (2) a two-layer linear network for regression. The study does give insight on how the penalty \textit{centers} feature representations and make the learning task easier. Furthermore, we also theoretically show that adding another final-layer weight penalty is \textit{necessary} to achieve better performance. To be added, close scrutiny reveals its \textit{inherent connection} with \textit{batch normalization} \cite{batch-normalization}. From a Bayesian point of view, feature penalty essentially introduces a Gaussian prior which softly normalizes the feature representation and eases the following learning task.
+
+% The rest of the paper is organized as follows. First, we review related works. We then study the empirical behavior and give theoretical analysis of a classification and regression problem. Finally, we validate and evaluate our analysis with extensive experiments and conclude our work. %in Section \ref{sec:conclusion}.
+
+\subsection{Related Work}
+\label{sec:related-work}
+There is a huge body of literature on one-shot learning and it is beyond the scope of this paper to review the entire literature. We only discuss papers that introduce prior knowledge to adjust the neural network learning process, as that is the main focus of this work.
+
+Prior knowledge, or ``inductive bias'' \cite{learn-to-learn1}, plays an important role in one-shot or low-shot learning. To reduce over-fitting problems, we need to regularize the learning process. Common techniques include weight regularization \cite{nn-pr}. %While regularizing the feature vector norm has been a staple of unsupervised learning approaches to prevent degenerate solutions \cite{unsup-l2}, it has been seldom considered in supervised classification. 
+Recently in \cite{low-shot}, a gradient penalty is introduced, which works well experimentally in low-shot scenarios.
+
+Various forms of feature regularization have been proposed to improve generalization: Dropout \cite{dropout} is effective to reduce over-fitting, but has been eschewed by recent architectures such as batch-normalization \cite{batch-normalization} and ResNets \cite{residual_net}. Other forms have also been proposed to improve transfer learning performance, such as minimizing the correlation of features \cite{decorr} and the multiverse loss \cite{multiverse} .
+
+Our work is also closely related to metric learning and nearest neighbor methods, in which representations from previous experience are applied in cross-domain settings \cite{metric-feature-transfer,one-shot-siamese,nca,one-shot-face}. The insight lies in that a well-trained representational model have strong ability to generalize well on new tasks. In a recent work \cite{mann}, DeepMind proposed a Memory Augmented Neural Network (MANN) to leverage the Neural-Turing-Machine for one-shot tasks. However, in \cite{matching-network}, it is found that a good initialization such as VGG-Net largely improves the one-shot performance. In our opinion, a good feature representations still play a central role in low-shot tasks. 
+
+% Other priors have been introduced in the one-shot/low-shot learning problem, with advantages in specific tasks. The prior can be distilled from %a constellation model \cite{bow-one-shot}, 
+% a compositionality assumption \cite{lake-bpl},  attributes \cite{attributes,attributes-share}% \cite{attributes,attributes-transfer,eszsl,attributes-share},
+% knowledge transfer \cite{feature-transfer}, 
+%hyper-parameter adaptation \cite{meta-learn-rl,learn-to-learn-gd-gd}, 
+% or multi-modality information \cite{zero-shot} %,zero-shot-convex}. % or a teacher network \cite{low-shot-distill}.
+
+\subsection{Contributions}
+The main contributions of our comprehensive analysis are three-fold:
+\begin{enumerate}
+\item We carefully carry out two case studies on the influence of feature regularization on shallow neural networks. We observe how the regularization centers features and eases the learning problem. Moreover, we propose a better design to avoid degenerate solutions.
+% Moreover, study the simplest non-linear-separable XOR problem and give insight on 
+\item From Bayesian point of view, close scrutiny reveals internal connections between feature regularization and batch normalization.
+\item Extensive experiments on synthetic, the ``Omniglot'' one-shot and the large-scale ImageNet datasets validate our analysis.
+\end{enumerate}
+

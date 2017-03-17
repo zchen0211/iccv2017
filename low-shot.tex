@@ -1,0 +1,24 @@
+{\color{red}\subsection{Feature Regularization May Improve Generalization}}
+{\color{red}As pointed out in \cite{low-shot}, the gradient penalty or feature regularization improves the performance of low-shot learning experimentally. Here, we give some preliminary analysis on how and why our modified model in Eqn \ref{eqn:final-cost} may improve generalization performance in neural network learning. Denoting the risk functional (testing error) $R(W)$ as:
+\begin{eqnarray*}
+R(W)&=&\frac{1}{2}\mathbb{E}\{||y-W\phi(x)||^2\}\\
+&=&\frac{1}{2}\int_{(\mathbf{x},y)\sim P(\mathbf{x},y)}||y-W\phi(x)||^2dP(\mathbf{x},y)
+\end{eqnarray*}
+and empirical risk function (training error) $R_{emp}(W)$ on $\{(x^i,y^i)|i=1,...,N\}$ as:
+\begin{eqnarray*}
+R_{emp}(W)=\frac{1}{2N}\sum_{i=1}^N||y^i-W\phi(x^i)||^2
+\end{eqnarray*}
+
+As we know, the training and testing discrepancy depends on the model complexity \cite{vc-dim}:
+\begin{eqnarray}
+R(W) - R_{emp}(W) \leq \nu(W)+O^*(\frac{h-\ln\eta}{N})%\\ %\sqrt{\frac{h(\log(2l/h)+1)-\log(\eta/4)}{l}}
+\label{eqn:bound}
+\end{eqnarray}
+where $O^*(.)$ denotes order of magnitude up to logarithmic factor. The upper bound \ref{eqn:bound} holds true with probability $1-\eta$ for a chosen $0<\eta<1$. In the equation, $h$ is a non-negative integer named the VC-dimension. The right side of Eqn \ref{eqn:bound} contains two term: the first one $\nu(W)$ is the error on training set while the second one models complexity of the learning system. In a multilayer neural network with $\rho$ parameters and non-linear activations, the system has a VC dimension \cite{vc-dim-nn} of $O(\rho\log\rho)$.
+
+In our model in Eqn \ref{eqn:final-cost}, the final cost function includes both feature and weight penalty as:
+\begin{eqnarray*}
+\arg\min_{W,\phi}\mathbb{E}\{l(W,\phi(\mathbf{x}^i),y^i)+\lambda_1\alpha^i||\phi(\mathbf{x}^i)||^2\}+\lambda_2||W||_F^2
+\end{eqnarray*}
+Empirically, the term $\lambda_2||W||_F^2$ enforces large margin which limits the selection space of $W$. The term $\lambda_1||\phi(x^i)||^2$ not only improves numerical stability by feature whitening as discussed in the above sections, but also limits the selection of hidden layer parameter. These regularization terms thus reduces the VC-dimension of our learning. According to Eqn \ref{eqn:bound}, the reduction of VC dimension of our model further reduces the theoretical discrepancy of training and testing performance.
+}

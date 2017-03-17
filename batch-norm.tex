@@ -1,0 +1,28 @@
+\subsection{Uniform $L_2$ Feature Penalty is a Soft Batch Normalization}
+\label{sec:theoretical}
+In our two case studies, we can observe that $L_2$ feature penalty centers the representation $\phi(\mathbf{x})$, which reminds us of the \textit{batch normalization} \cite{batch-normalization} with similar whitening effects.
+%in turn makes final layer learning (both classification and regression) easier. 
+We reveal here that the two methods are indeed closely related in spirit.
+
+From the Bayesian point view, we analyze a binary classification problem: the probability of prediction $\hat{y}$ given $\mathbf{x}$ observes a Bernoulli distribution $p(\hat{y}|\mathbf{x},\phi,W)=\mathbf{Ber}(\hat{y}|\mathbf{sigm}(W\phi(\mathbf{x}))$, where  $\phi(\mathbf{x})\in\mathbb{R}^d$ is a neural network parametrized by $\phi$ and $W\in R^{1\times d}$. Assuming a factorized Gaussian prior on $\phi(\mathbf{x})\sim N(\mathbf{0},\mathbf{Diag}(\sigma_1^2))$ and $W\sim N( \mathbf{0},\mathbf{Diag}(\sigma_2^2))$, we have the posterior as:
+\begin{equation}
+\begin{split}
+&p(\phi,W|\{(\mathbf{x}^i,y^i)\})=p(\{(\mathbf{x}^i,y^i)\}|\phi,W)p(\phi)p(W)\\
+&\propto\prod_i(\frac{1}{1+e^{-W\phi(\mathbf{x}^i)}})^{y^i}(\frac{1}{1+e^{W\phi(\mathbf{x}^i)}})^{1-y^i}\\
+&\frac{\exp(-\frac{||\phi(\mathbf{x}^i)||^2}{2\sigma_1^2})}{(\sqrt{2\pi}\sigma_1)^d}\frac{\exp(-\frac{||W||_F^2}{2\sigma_2^2})}{(\sqrt{2\pi}\sigma_2)^d}
+\end{split}
+\label{eqn:prob}
+\end{equation}
+Applying the maximum-a-posteriori (MAP) principle to Eqn(\ref{eqn:prob}) leads to the following objective: % to be minimized:
+%The maximum-likelihood of Eqn (\ref{eqn:prob}) is equivalent to minimizing its negative log-likelihood:
+\begin{equation}
+\mathbb{E}\{l(W,\phi(\mathbf{x}^i),y^i)+\frac{1}{2\sigma_1^2}||\phi(\mathbf{x}^i)||^2\}+\frac{1}{2\sigma_2^2}||W||_F^2+C
+%\label{eqn:final-cost}
+\end{equation}
+with $C=-d\ln(\sqrt{2\pi}\sigma_1)-d\ln(\sqrt{2\pi}\sigma_2)$ is a constant. This is exactly the uniform $L_2$ version of Equation (\ref{eqn:final-cost}) with $\lambda_1=\frac{1}{2\sigma_1^2}$, $\lambda_2=\frac{1}{2\sigma_2^2}$ and $\alpha^i=1$. The \textit{i.i.d.} Gaussian prior on $W$ and $\phi(\mathbf{x})$ has the effect of \textit{whitening} the final representation.
+
+The difference between uniform $L_2$ feature penalty and \textit{batch normalization} is that the former whitens $\phi(\mathbf{x})$ implicitly with an \textit{i.i.d.} Gaussian prior during training, while the latter explicitly normalizes the output by keeping moving average and variance. We could say that \textbf{\textit{the uniform $L_2$ penalty is a soft batch normalization}}. 
+
+As analyzed in \cite{analysis-loglinear}
+%,analysis-deeplinear,analysis-paraavr,natural-neural-networks,mean-normalized-sgd}, 
+this kind of whitening improved the numerical behavior and makes the optimization converge faster. In summary, the $L_2$ feature regularization on $\phi(x)$ indeed tends to reduce internal covariate shift.

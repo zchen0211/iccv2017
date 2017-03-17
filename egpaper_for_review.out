@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{. Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{. Related Work}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{. Contributions}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{. An Analysis of Feature Regularization}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{. Case Study 1: an Empirical Analysis of XOR Classification}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{. Case Study 2: a Comprehensive Analysis on a Regression Problem}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.1}{L2 Feature Regularization Makes Optimization Easier}{subsection.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{. Uniform L2 Feature Penalty is a Soft Batch Normalization}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.4}{. Feature Regularization May Improve Generalization}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{. Experimental Results}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{. Synthetic Datasets}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{. Low-shot learning on Omniglot}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{. Large-scale Low-shot Learning on ImageNet}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{. Comparison with Batch-Normalization}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{. Conclusion}{}% 15

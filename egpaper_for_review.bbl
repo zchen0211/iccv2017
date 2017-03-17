@@ -1,0 +1,148 @@
+\begin{thebibliography}{10}\itemsep=-1pt
+
+\bibitem{nn-global-minima}
+P.~Baldi and K.~Hornik.
+\newblock Neural networks and principal component analysis: Learning from
+  examples without local minima.
+\newblock {\em Neural networks}, 2, 1989.
+
+\bibitem{feature-transfer}
+E.~Bart and S.~Ullman.
+\newblock Cross-generalization: Learning novel classes from a single example by
+  feature replacement.
+\newblock {\em CVPR}, 2005.
+
+\bibitem{meta-learn-theory}
+J.~Baxter.
+\newblock Theoretical models of learning to learn.
+\newblock {\em Learning to learn. Springer US}, pages 71--94, 1998.
+
+\bibitem{nn-pr}
+C.~Bishop.
+\newblock Neural networks for pattern recogsontag, eduardo d. "vc dimension of
+  neural networks." nato asi series f computer and systems sciences 168 (1998):
+  69-96.nition.
+\newblock {\em Oxford university press}, 1995.
+
+\bibitem{one-shot-face}
+S.~Chopra, R.~Hadsell, and Y.~LeCun.
+\newblock Learning a similarity metric discriminatively, with application to
+  face verification.
+\newblock {\em CVPR}, 2005.
+
+\bibitem{decorr}
+M.~Cogswell, F.~Ahmed, R.~Girshick, L.~Zitnick, and D.~Batra.
+\newblock Reducing overfitting in deep networks by decorrelating
+  representations.
+\newblock {\em ICLR}, 2016.
+
+\bibitem{metric-feature-transfer}
+M.~Fink.
+\newblock Object classification from a single example utilizing class relevance
+  metrics.
+\newblock {\em NIPS}, 2005.
+
+\bibitem{nca}
+J.~Goldberger, S.~Roweis, G.~Hinton, and R.~Salakhutdinov.
+\newblock Neighborhood components analysis.
+\newblock {\em NIPS}, 2005.
+
+\bibitem{low-shot}
+B.~Hariharan and R.~Girshick.
+\newblock Low-shot visual object recognition.
+\newblock {\em arxiv}, 2016.
+
+\bibitem{residual_net}
+K.~He, X.~Zhang, S.~Ren, and J.~Sun.
+\newblock Deep residual learning for image recognition.
+\newblock {\em CVPR}, 2016.
+
+\bibitem{batch-normalization}
+S.~Ioffe and C.~Szegedy.
+\newblock Batch normalization: Accelerating deep network training by reducing
+  internal covariate shift.
+\newblock {\em arxiv}, 2015.
+
+\bibitem{deep-global-minima}
+K.~Kawaguchi.
+\newblock Deep learning without poor local minima.
+\newblock {\em NIPS}, 2016.
+
+\bibitem{adam}
+D.~Kingma and J.~Ba.
+\newblock Adam: A method for stochastic optimization.
+\newblock {\em arxiv}, 2014.
+
+\bibitem{one-shot-siamese}
+G.~Koch, R.~Zemel, and R.~Salakhutdinov.
+\newblock Siamese neural networks for one-shot image recognition.
+\newblock {\em ICML Deep Learning workshop}, 2015.
+
+\bibitem{alexnet}
+A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In {\em NIPS}, pages 1097--1105, 2012.
+
+\bibitem{lake-tutorial}
+B.~Lake, T.~Ullman, J.~B. Tenenbaum, and S.~J. Gershman.
+\newblock Building machines that learn and think like people.
+\newblock In {\em arxiv}, 2016.
+
+\bibitem{lake-omniglot}
+B.~M. Lake, R.~Salakhutdinov, J.~Gross, and J.~B. Tenenbaum.
+\newblock One shot learning of simple visual concepts.
+\newblock In {\em CogSci}, 2011.
+
+\bibitem{multiverse}
+E.~Littwin and L.~Wolf.
+\newblock The multiverse loss for robust transfer learning.
+\newblock {\em arxiv}, 2015.
+
+\bibitem{russakovsky2015imagenet}
+O.~Russakovsky, J.~Deng, H.~Su, J.~Krause, S.~Satheesh, S.~Ma, Z.~Huang,
+  A.~Karpathy, A.~Khosla, M.~Bernstein, A.~C. Berg, and L.~Fei-Fei.
+\newblock Imagenet large scale visual recognition challenge.
+\newblock {\em IJCV}, 115(3):211--252, 2015.
+
+\bibitem{mann}
+A.~Santoro, S.~Bartunov, M.~Botvinick, D.~Wierstra, and T.~Lillicrap.
+\newblock One-shot learning with memory-augmented neural networks.
+\newblock {\em arxiv}, 2016.
+
+\bibitem{vc-dim-nn}
+E.~Sontag.
+\newblock Vc dimension of neural networks.
+\newblock {\em NATO ASI Series F Computer and Systems Sciences}, pages 69--96,
+  1998.
+
+\bibitem{dropout}
+N.~Srivastava, G.~Hinton, A.~Krizhevsky, I.~Sutskever, and R.~Salakhutdinov.
+\newblock Dropout: a simple way to prevent neural networks from overfitting.
+\newblock {\em JMLR}, 15(1):1929--1958, 2014.
+
+\bibitem{learn-to-learn1}
+S.~Thrun.
+\newblock Lifelong learning algorithms.
+\newblock {\em Learning to learn}, pages 181--209, 1998.
+
+\bibitem{vc-dim}
+V.~Vapnik.
+\newblock The nature of statistical learning theory.
+\newblock {\em Data mining and knowledge discovery, Springer}, 1998.
+
+\bibitem{matching-network}
+O.~Vinyals, C.~Blundell, T.~Lillicrap, K.~Kavukcuoglu, and D.~Wierstra.
+\newblock Matching networks for one shot learning.
+\newblock {\em arxiv}, 2016.
+
+\bibitem{analysis-loglinear}
+S.~Wiesler and H.~Ney.
+\newblock A convergence analysis of log-linear training.
+\newblock {\em NIPS}, 2011.
+
+\bibitem{deep_asr}
+D.~Yu and L.~Deng.
+\newblock Automatic speech recognition.
+\newblock {\em Springer}, 2012.
+
+\end{thebibliography}
